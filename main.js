@@ -211,24 +211,25 @@ const pets = [
     }
   ];
 
-  const printToDom = (divId, textToprint) => {             ///prints to the dom 
+  const printToDom = (divId, textToPrint) => {
     const selectedDiv = document.getElementById(divId);
-    selectedDiv.innerHTML = textToprint;
+    selectedDiv.innerHTML = textToPrint;
 }
-const createpets = (pets) => {
-  // bus domstring from bus paramenter , (bus) is the parameter, for loop
-  let domString ='';
 
-    pets.forEach((animals) => {
-      domString += `<div class ="card">`;
-            domString += `<div class="petName"><h2>${animals.name}</h2></div>`;
-            domString += `<div class="image"><img src=${animals.imageUrl}></div>`;
-            domString += `<div class="color">${animals.color}</div>`;
-            domString += `<div class="special skill">${animals.specialSkill}</div>`;
-            domString += `<div class="petType">${animals.type}</div>`;
-            domString += `</div>`;
+const createPets = (pets) => {
+    let domString = '';
+
+pets.forEach((animals) => {
+    domString += `<div class = "card">`;
+    domString += `  <div class="petName"><h2>${animals.name}</h2></div>`;
+    domString += `  <div class="image"><img src=${animals.imageUrl}></div>`;
+    domString += `  <div class="color"><p>${animals.color}</p></div>`;
+    domString += `  <div class="special_skill"><p>Pet Special Skill: ${animals.specialSkill}</p></div>`;
+    domString += `  <div class="petType"><h2> ${animals.type}</h2></div>`;
+    domString += `</div>`;
     })
-       printToDom('main-content'), domString;
+    printToDom('main-content', domString);
+}
 
 
       const buttonClick =(e) => {
@@ -240,44 +241,24 @@ const createpets = (pets) => {
           };
         });
   
-          if(buttonId ==="all"){
-            createpets(pets)
+          if(buttonId === 'all') {
+            createPets(pets)
           } else {
-            createpets(selectedPets)
+            createPets(selectedPets)
           }
-        };
+      };
 
-        const buttonEvents = () = {
-          document.getElementById('dog').addEventListner('click', buttonClick);
-          document.getElementById('cat').addEventListner('click', buttonClick);
-          document.getElementById('dino').addEventListner('click', buttonClick);
-          document.getElementById('all').addEventListner('click', buttonClick);
+        const buttonEvents = () => {
+          document.getElementById('dog').addEventListener('click', buttonClick);
+          document.getElementById('cat').addEventListener('click', buttonClick);
+          document.getElementById('dino').addEventListener('click', buttonClick);
+          document.getElementById('all').addEventListener('click', buttonClick);
         };
+  
 
         const initializer = () => {
           buttonEvents();
-            createpets(pets);
+          createPets(pets);
         };
 
         initializer();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-      
